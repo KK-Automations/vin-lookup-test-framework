@@ -1,0 +1,78 @@
+# Python-specific Ignores
+## Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Virtual Environments
+venv/
+env/
+.env/
+.venv/
+ENV/
+
+# IDE-specific Files
+## Visual Studio Code
+.vscode/
+*.code-workspace
+
+## PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+## Jupyter Notebook
+.ipynb_checkpoints/
+
+# Sensitive Information
+## Environment Variables
+.env
+*.env
+secrets.yml
+config.ini
+
+# Logging and Debugging
+*.log
+logs/
+debug.log
+
+# Testing and Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project Specific Ignores
+## Ignore any local configuration files
+config_local.py
+local_settings.py
+
+# Large Data Files (optional)
+*.csv
+*.json
+*.sqlite3
+
+# Compiled Python Files
+*.pyc
+*.pyo
+*.pyd
+
+# Allure Reports (for our test framework)
+allure-results/
+allure-report/
