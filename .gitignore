@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+testenv/
+
+# IDE
+.vscode/
+*.code-workspace
+.idea/
+*.iml
+
+# Secrets and environment
+.env
+secrets.yml
+
+# Logs
+*.log
+logs/
+
+# Local data (SQLite cache lives here)
+data/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+allure-results/
+allure-report/
+
+# OS
+.DS_Store
+Thumbs.db

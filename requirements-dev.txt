@@ -1,0 +1,4 @@
+-r requirements.txt
+pytest==7.4.3
+allure-pytest==2.13.2
+ruff==0.4.8
