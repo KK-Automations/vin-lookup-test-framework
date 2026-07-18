@@ -1,0 +1,84 @@
+{% if not result.parsed.ok %}
+    {% include "partials/error_card.html" %}
+{% else %}
+<article class="result-card">
+    <header class="result-header">
+        <div>
+            <h2 class="vin-code">{{ result.parsed.normalized }}</h2>
+            <p class="vin-structure">
+                WMI <code>{{ result.parsed.wmi }}</code> ·
+                VDS <code>{{ result.parsed.vds }}</code> ·
+                VIS <code>{{ result.parsed.vis }}</code>
+            </p>
+        </div>
+        {% if result.consensus %}
+        <div class="confidence confidence-{{ result.consensus.confidence_bucket | lower }}"
+             title="Weighted per-field agreement: confirmed fields score 1.0, single-source 0.5, conflicting 0.2. Make, model, and year weigh most.">
+            <span class="confidence-value">{{ result.consensus.confidence_pct }}%</span>
+            <span class="confidence-bucket">{{ result.consensus.confidence_bucket }} confidence</span>
+            <span class="confidence-sources">{{ result.consensus.providers_ok }} of
+                {{ result.consensus.providers_total }} sources responded</span>
+        </div>
+        {% endif %}
+    </header>
+
+    {% for warning in result.parsed.warnings %}
+    <p class="callout callout-warn"><strong>Warning:</strong> {{ warning.message }}</p>
+    {% endfor %}
+
+    {% if result.suggestions %}
+        {% include "partials/suggestion_card.html" %}
+    {% endif %}
+
+    {% if result.consensus %}
+    <div class="field-table" role="table" aria-label="Decoded vehicle fields">
+        {% for name, fc in result.consensus.fields.items() %}
+        <div class="field-row field-status-{{ fc.status }}" role="row">
+            <span class="field-label" role="cell">{{ field_labels[name] }}</span>
+            <span class="field-value" role="cell">
+                {% if fc.status == 'unknown' %}
+                    <span class="not-available">not available</span>
+                {% elif fc.status == 'conflict' %}
+                    {% for vote in fc.votes %}
+                        <span class="conflict-vote">{{ vote.value }}
+                            <small>({{ vote.provider | provider_label }})</small></span>
+                    {% endfor %}
+                {% else %}
+                    {{ fc.value }}
+                {% endif %}
+            </span>
+            <span class="field-badge badge-{{ fc.status }}" role="cell">
+                {% if fc.status == 'confirmed' %}
+                    <span aria-hidden="true">✓</span> Confirmed
+                {% elif fc.status == 'single' %}
+                    <span aria-hidden="true">⚠</span> Single source:
+                    {{ fc.votes[0].provider | provider_label }}
+                {% elif fc.status == 'conflict' %}
+                    <span aria-hidden="true">✗</span> Sources disagree
+                {% else %}
+                    <span aria-hidden="true">·</span> No source
+                {% endif %}
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <details class="provenance">
+        <summary>Source detail</summary>
+        <ul>
+            {% for pr in result.provider_results %}
+            <li>
+                <strong>{{ pr.display_name }}</strong>
+                {% if pr.ok %}
+                    responded in {{ pr.latency_ms }} ms
+                    {% if pr.from_cache %}(cached){% endif %}
+                {% else %}
+                    failed: {{ pr.error }}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </details>
+</article>
+{% endif %}

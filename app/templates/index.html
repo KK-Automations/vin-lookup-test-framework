@@ -1,19 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your VIN Lookup</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
-</head>
-<body>
-    <h1>VIN Lookup</h1>
-    <form id="vin-form" method="POST" action="/search">
-        <label for="vin">Enter VIN:</label>
-        <input type="text" id="vin" name="vin" required>
-        <button type="submit">Search</button>
+{% extends "base.html" %}
+{% block title %}VIN decoder with cross-checked accuracy{% endblock %}
+{% block content %}
+<section class="hero">
+    <h1>Decode any VIN, honestly.</h1>
+    <p class="hero-sub">Every field is cross-checked across independent data
+    sources and labeled with its agreement level. No silent guesses.</p>
+
+    <form class="vin-form"
+          hx-post="{{ url_for('partials.lookup') }}"
+          hx-target="#result"
+          hx-swap="innerHTML"
+          hx-indicator="#lookup-indicator">
+        <label class="visually-hidden" for="vin">Vehicle Identification Number</label>
+        <input id="vin" name="vin" type="text" inputmode="latin"
+               autocomplete="off" spellcheck="false" maxlength="20"
+               placeholder="Enter a 17 character VIN, e.g. 1HGCM82633A004352"
+               value="{{ prefill_vin or '' }}" required>
+        <button type="submit">Decode</button>
     </form>
-    <div id="result"></div>
-    <script src="/static/js/scripts.js"></script>
-</body>
-</html>
+    <div id="lookup-indicator" class="htmx-indicator" role="status">
+        <span class="spinner" aria-hidden="true"></span> Checking sources…
+    </div>
+</section>
+
+<section id="result" aria-live="polite">
+    {% if result %}{% include "partials/vin_result.html" %}{% endif %}
+</section>
+{% endblock %}

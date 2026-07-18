@@ -1,0 +1,19 @@
+[project]
+name = "vin-lookup"
+version = "1.0.0"
+description = "VIN search and decoder with cross-checked accuracy for North America"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "live: tests that hit real provider APIs (skipped in CI)",
+]
+addopts = "-m 'not live'"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]

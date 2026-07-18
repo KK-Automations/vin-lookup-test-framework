@@ -1,0 +1,9 @@
+<article class="result-card error-card">
+    <h2>That VIN needs a second look</h2>
+    {% for issue in result.parsed.errors %}
+    <p class="callout callout-error">{{ issue.message }}</p>
+    {% endfor %}
+    {% if result.suggestions %}
+        {% include "partials/suggestion_card.html" %}
+    {% endif %}
+</article>

@@ -1,0 +1,13 @@
+<div class="suggestions">
+    <h3>Did you mean</h3>
+    {% for s in result.suggestions %}
+    <form hx-post="{{ url_for('partials.lookup') }}"
+          hx-target="#result" hx-swap="innerHTML" class="suggestion">
+        <input type="hidden" name="vin" value="{{ s.vin }}">
+        <button type="submit" class="suggestion-btn">
+            <span class="suggestion-vin">{{ s.vin }}</span>
+            <span class="suggestion-desc">{{ s.description }}</span>
+        </button>
+    </form>
+    {% endfor %}
+</div>

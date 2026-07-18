@@ -1,16 +1,29 @@
+"""Flask application factory."""
+
 from flask import Flask
+
 from config.logging_config import setup_logging
+from config.settings import Settings
 
-setup_logging()
 
-def create_app():
-    """
-    Create and configure the Flask app.
-    """
+def create_app(settings: Settings | None = None) -> Flask:
+    setup_logging()
     app = Flask(__name__)
+    app.config["SETTINGS"] = settings or Settings.from_env()
 
-    # Import routes and register them
-    from app.routes import app as routes_app
-    app = routes_app
+    from app.domain.records import FIELD_LABELS
+    from app.providers import provider_label
+    app.jinja_env.globals["field_labels"] = FIELD_LABELS
+    app.jinja_env.filters["provider_label"] = provider_label
+
+    from app.routes.pages import pages_bp
+    from app.routes.partials import partials_bp
+
+    app.register_blueprint(pages_bp)
+    app.register_blueprint(partials_bp)
+
+    @app.get("/healthz")
+    def healthz():
+        return {"status": "ok"}
 
     return app

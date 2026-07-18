@@ -1,9 +1,10 @@
 import logging
 import logging.config
 
+
 def setup_logging():
-    """Configures logging for the application."""
-    logging_config = {
+    """Configure console logging. Containers capture stdout; no log files."""
+    logging.config.dictConfig({
         "version": 1,
         "disable_existing_loggers": False,
         "formatters": {
@@ -16,16 +17,9 @@ def setup_logging():
                 "class": "logging.StreamHandler",
                 "formatter": "default",
             },
-            "file": {
-                "class": "logging.FileHandler",
-                "filename": "app.log",
-                "formatter": "default",
-            },
         },
         "root": {
             "level": "INFO",
-            "handlers": ["console", "file"],
+            "handlers": ["console"],
         },
-    }
-
-    logging.config.dictConfig(logging_config)
+    })
