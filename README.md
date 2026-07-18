@@ -105,3 +105,17 @@ Layers in short: pure domain logic (`app/domain/`), pluggable providers
 behind a registry (`app/providers/`), a consensus engine
 (`app/consensus/`), orchestration services (`app/services/`), SQLite
 repositories (`app/cache/`), and Flask blueprints (`app/routes/`).
+
+## Security
+
+Credentials live only in `.env` (gitignored) or deployment environment
+variables; `.env.example` documents the contract. CI runs a TruffleHog
+secret scan on every push. See [SECURITY.md](SECURITY.md) for the
+vulnerability reporting policy.
+
+## License
+
+MIT, see [LICENSE](LICENSE). Vendored libraries and data source terms are
+listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Vehicle data
+decoded from NHTSA vPIC is public domain; CarAPI and Auto.dev responses
+are subject to their respective terms of service.

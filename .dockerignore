@@ -1,0 +1,29 @@
+# Never let secrets or local state into the build context
+.env
+.env.*
+!.env.example
+data/
+
+# VCS and tooling
+.git/
+.github/
+.gitignore
+.vscode/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+
+# Not needed in the image
+tests/
+docs/
+README.md
+SECURITY.md
+THIRD_PARTY_NOTICES.md
+LICENSE
+docker-compose.yml
+Dockerfile
+requirements-dev.txt
+allure-results/
+allure-report/
+*.log

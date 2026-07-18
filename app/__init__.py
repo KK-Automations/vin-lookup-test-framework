@@ -28,4 +28,11 @@ def create_app(settings: Settings | None = None) -> Flask:
     def healthz():
         return {"status": "ok"}
 
+    @app.after_request
+    def security_headers(response):
+        response.headers.setdefault("X-Content-Type-Options", "nosniff")
+        response.headers.setdefault("X-Frame-Options", "DENY")
+        response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+        return response
+
     return app

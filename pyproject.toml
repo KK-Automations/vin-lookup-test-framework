@@ -3,6 +3,8 @@ name = "vin-lookup"
 version = "1.0.0"
 description = "VIN search and decoder with cross-checked accuracy for North America"
 requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Krishna Puppala" }]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
