@@ -1,0 +1,18 @@
+{% if models is none %}
+<p class="callout callout-warn">Pick a model year and a make first.</p>
+{% elif not models %}
+<p class="callout callout-warn">No models found for {{ make }} in {{ year }}.
+The registry only lists models actually offered that year, so try a nearby
+year or check the make spelling.</p>
+{% else %}
+<div class="result-card">
+    <h2>{{ make }} models for {{ year }}</h2>
+    <p class="models-count">{{ models | length }} model{{ 's' if models | length != 1 }}
+    from the federal vPIC registry.</p>
+    <ul class="models-grid">
+        {% for model in models %}
+        <li class="model-item">{{ model }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}

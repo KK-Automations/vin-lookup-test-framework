@@ -16,11 +16,13 @@ def create_app(settings: Settings | None = None) -> Flask:
     app.jinja_env.globals["field_labels"] = FIELD_LABELS
     app.jinja_env.filters["provider_label"] = provider_label
 
+    from app.routes.api import api_bp
     from app.routes.pages import pages_bp
     from app.routes.partials import partials_bp
 
     app.register_blueprint(pages_bp)
     app.register_blueprint(partials_bp)
+    app.register_blueprint(api_bp)
 
     @app.get("/healthz")
     def healthz():

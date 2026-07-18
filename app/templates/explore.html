@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Explore makes and models{% endblock %}
+{% block content %}
+<section class="hero">
+    <h1>Explore makes and models</h1>
+    <p class="hero-sub">Browse every model sold in North America for a given
+    make and model year, straight from the federal vPIC registry.</p>
+
+    <form class="explore-form"
+          hx-get="{{ url_for('partials.models') }}"
+          hx-target="#models"
+          hx-swap="innerHTML"
+          hx-indicator="#explore-indicator"
+          x-data="{ other: false }">
+        <div class="explore-field">
+            <label for="year">Model year</label>
+            <select id="year" name="year" required>
+                {% for year in years %}
+                <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="explore-field">
+            <label for="make">Make</label>
+            <select id="make" name="make" x-on:change="other = ($event.target.value === '__other__')">
+                {% for make in makes %}
+                <option value="{{ make }}">{{ make }}</option>
+                {% endfor %}
+                <option value="__other__">Other…</option>
+            </select>
+        </div>
+        <div class="explore-field" x-show="other" x-cloak>
+            <label for="other_make">Other make</label>
+            <input id="other_make" name="other_make" type="text"
+                   placeholder="e.g. Ferrari" x-bind:required="other">
+        </div>
+        <button type="submit">Show models</button>
+    </form>
+    <div id="explore-indicator" class="htmx-indicator" role="status">
+        <span class="spinner" aria-hidden="true"></span> Loading models…
+    </div>
+</section>
+
+<section id="models" aria-live="polite"></section>
+{% endblock %}
+{% block nav_extra %}{% endblock %}

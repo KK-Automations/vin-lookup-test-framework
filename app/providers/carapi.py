@@ -100,15 +100,22 @@ class CarApiProvider(VinProvider):
         except ValueError as exc:
             raise ProviderError("CarAPI returned invalid JSON") from exc
 
+    @staticmethod
+    def _usable(value):
+        """Drop free-tier paywall placeholders like '*** (NOTE: ...)'."""
+        if isinstance(value, str) and ("***" in value or "NOTE:" in value):
+            return None
+        return value
+
     def to_record(self, raw: dict) -> VehicleRecord:
         record = VehicleRecord()
 
         def put(field: str, value, raw_key: str):
-            record.set(field, value, str(raw.get(raw_key)), self.name)
+            record.set(field, self._usable(value), str(raw.get(raw_key)), self.name)
 
         put("make", raw.get("make"), "make")
         put("model", raw.get("model"), "model")
-        year = raw.get("year")
+        year = self._usable(raw.get("year"))
         if isinstance(year, str) and year.isdigit():
             year = int(year)
         record.set("year", year if isinstance(year, int) else None,
@@ -116,14 +123,16 @@ class CarApiProvider(VinProvider):
         put("trim", raw.get("trim"), "trim")
 
         specs = raw.get("specs") or {}
-        record.set("body_class", specs.get("body_class") or raw.get("body_class"),
-                   str(specs.get("body_class")), self.name)
-        record.set("doors", specs.get("doors") if isinstance(specs.get("doors"), int)
-                   else None, str(specs.get("doors")), self.name)
-        record.set("fuel_type", specs.get("fuel_type") or raw.get("fuel_type"),
-                   str(specs.get("fuel_type")), self.name)
-        record.set("drive_type", specs.get("drive_type") or raw.get("drive_type"),
-                   str(specs.get("drive_type")), self.name)
-        record.set("transmission", specs.get("transmission") or raw.get("transmission"),
-                   str(specs.get("transmission")), self.name)
+
+        def put_spec(field: str, key: str):
+            value = self._usable(specs.get(key)) or self._usable(raw.get(key))
+            record.set(field, value, str(specs.get(key)), self.name)
+
+        put_spec("body_class", "body_class")
+        doors = self._usable(specs.get("doors"))
+        record.set("doors", doors if isinstance(doors, int) else None,
+                   str(specs.get("doors")), self.name)
+        put_spec("fuel_type", "fuel_type")
+        put_spec("drive_type", "drive_type")
+        put_spec("transmission", "transmission")
         return record
