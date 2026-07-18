@@ -1,0 +1,24 @@
+{% if entries %}
+<h2 class="recent-title">Recently searched</h2>
+<ul class="recent-list">
+    {% for entry in entries %}
+    <li>
+        <a class="recent-item" href="{{ url_for('pages.vin_detail', vin=entry.vin) }}">
+            <span class="recent-vin">{{ entry.vin }}</span>
+            <span class="recent-desc">
+                {% if entry.year or entry.make %}
+                    {{ entry.year or '' }} {{ entry.make or '' }} {{ entry.model or '' }}
+                {% else %}
+                    details unavailable
+                {% endif %}
+            </span>
+            {% if entry.confidence_bucket %}
+            <span class="recent-chip chip-{{ entry.confidence_bucket | lower }}">
+                {{ (entry.confidence * 100) | round | int }}%
+            </span>
+            {% endif %}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}

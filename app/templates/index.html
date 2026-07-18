@@ -26,4 +26,10 @@
 <section id="result" aria-live="polite">
     {% if result %}{% include "partials/vin_result.html" %}{% endif %}
 </section>
+
+<section class="recent"
+         hx-get="{{ url_for('partials.recent') }}"
+         hx-trigger="load"
+         hx-swap="innerHTML">
+</section>
 {% endblock %}

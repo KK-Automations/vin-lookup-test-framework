@@ -7,7 +7,9 @@ absent.
 
 import logging
 
+from app.providers.autodev import AutoDevProvider
 from app.providers.base import VinProvider
+from app.providers.carapi import CarApiProvider
 from app.providers.local_structural import LocalStructuralProvider
 from app.providers.nhtsa_vpic import NhtsaVpicProvider
 
@@ -16,6 +18,8 @@ logger = logging.getLogger(__name__)
 ALL_PROVIDERS: list[type[VinProvider]] = [
     LocalStructuralProvider,
     NhtsaVpicProvider,
+    CarApiProvider,
+    AutoDevProvider,
 ]
 
 

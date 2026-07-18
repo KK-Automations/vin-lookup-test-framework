@@ -313,6 +313,51 @@ a { color: var(--purple-700); }
 
 .suggestion-desc { color: var(--text-muted); font-size: 0.85rem; }
 
+/* Recently searched */
+.recent { margin-top: 2rem; text-align: left; }
+
+.recent-title { font-size: 1.1rem; margin: 0 0 0.6rem; }
+
+.recent-list {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: grid;
+    gap: 0.4rem;
+}
+
+.recent-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0.9rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--text);
+}
+
+.recent-item:hover { border-color: var(--purple-500); }
+
+.recent-vin {
+    font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.recent-desc { color: var(--text-muted); font-size: 0.85rem; flex: 1; }
+
+.recent-chip {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+}
+
+.chip-high { background: var(--ok-bg); color: var(--ok); }
+.chip-medium { background: var(--warn-bg); color: var(--warn); }
+.chip-low { background: var(--bad-bg); color: var(--bad); }
+
 /* Provenance */
 .provenance { margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem; }
 
