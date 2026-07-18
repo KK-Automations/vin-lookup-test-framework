@@ -1,0 +1,492 @@
+{
+  "year": 2003,
+  "make": "HONDA",
+  "model": "*** (NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication)",
+  "trim": "*** (NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication)",
+  "specs": {
+    "active_safety_system_note": "*** (hidden)",
+    "adaptive_cruise_control_acc": "*** (hidden)",
+    "adaptive_driving_beam_adb": "*** (hidden)",
+    "anti_lock_braking_system_abs": "*** (hidden)",
+    "auto_reverse_system_for_windows_and_sunroofs": "*** (hidden)",
+    "automatic_crash_notification_acn_advanced_automatic_crash_notification_aacn": "*** (hidden)",
+    "automatic_pedestrian_alerting_sound_for_hybrid_and_ev_only": "*** (hidden)",
+    "axle_configuration": "*** (hidden)",
+    "axles": "*** (hidden)",
+    "backup_camera": "*** (hidden)",
+    "base_price": "*** (hidden)",
+    "battery_current_amps_from": "*** (hidden)",
+    "battery_current_amps_to": "*** (hidden)",
+    "battery_energy_kwh_from": "*** (hidden)",
+    "battery_energy_kwh_to": "*** (hidden)",
+    "battery_type": "*** (hidden)",
+    "battery_voltage_volts_from": "*** (hidden)",
+    "battery_voltage_volts_to": "*** (hidden)",
+    "bed_length_inches": "*** (hidden)",
+    "bed_type": "*** (hidden)",
+    "blind_spot_intervention_bsi": "*** (hidden)",
+    "blind_spot_warning_bsw": "*** (hidden)",
+    "body_class": "*** (hidden)",
+    "brake_system_description": "*** (hidden)",
+    "brake_system_type": "*** (hidden)",
+    "bus_floor_configuration_type": "*** (hidden)",
+    "bus_length_feet": "*** (hidden)",
+    "bus_type": "*** (hidden)",
+    "cab_type": "*** (hidden)",
+    "charger_level": "*** (hidden)",
+    "charger_power_kw": "*** (hidden)",
+    "combined_braking_system_cbs": "*** (hidden)",
+    "cooling_type": "*** (hidden)",
+    "crash_imminent_braking_cib": "*** (hidden)",
+    "curb_weight_pounds": "*** (hidden)",
+    "curtain_air_bag_locations": "*** (hidden)",
+    "custom_motorcycle_type": "*** (hidden)",
+    "daytime_running_light_drl": "*** (hidden)",
+    "destination_market": "*** (hidden)",
+    "displacement_cc": "*** (hidden)",
+    "displacement_ci": "*** (hidden)",
+    "displacement_l": "*** (hidden)",
+    "doors": "*** (hidden)",
+    "drive_type": "*** (hidden)",
+    "dynamic_brake_support_dbs": "*** (hidden)",
+    "electrification_level": "*** (hidden)",
+    "electronic_stability_control_esc": "*** (hidden)",
+    "engine_brake_hp_from": "*** (hidden)",
+    "engine_brake_hp_to": "*** (hidden)",
+    "engine_configuration": "*** (hidden)",
+    "engine_manufacturer": "*** (hidden)",
+    "engine_model": "*** (hidden)",
+    "engine_number_of_cylinders": "*** (hidden)",
+    "engine_power_kw": "*** (hidden)",
+    "engine_stroke_cycles": "*** (hidden)",
+    "entertainment_system": "*** (hidden)",
+    "ev_drive_unit": "*** (hidden)",
+    "event_data_recorder_edr": "*** (hidden)",
+    "forward_collision_warning_fcw": "*** (hidden)",
+    "front_air_bag_locations": "*** (hidden)",
+    "fuel_delivery_fuel_injection_type": "*** (hidden)",
+    "fuel_tank_material": "*** (hidden)",
+    "fuel_tank_type": "*** (hidden)",
+    "fuel_type_primary": "*** (hidden)",
+    "fuel_type_secondary": "*** (hidden)",
+    "gross_combination_weight_rating_from": "*** (hidden)",
+    "gross_combination_weight_rating_to": "*** (hidden)",
+    "gross_vehicle_weight_rating_from": "*** (hidden)",
+    "gross_vehicle_weight_rating_to": "*** (hidden)",
+    "headlamp_light_source": "*** (hidden)",
+    "keyless_ignition": "*** (hidden)",
+    "knee_air_bag_locations": "*** (hidden)",
+    "lane_centering_assistance": "*** (hidden)",
+    "lane_departure_warning_ldw": "*** (hidden)",
+    "lane_keeping_assistance_lka": "*** (hidden)",
+    "manufacturer_name": "*** (hidden)",
+    "motorcycle_chassis_type": "*** (hidden)",
+    "motorcycle_suspension_type": "*** (hidden)",
+    "non_land_use": "*** (hidden)",
+    "note": "*** (hidden)",
+    "number_of_battery_cells_per_module": "*** (hidden)",
+    "number_of_battery_modules_per_pack": "*** (hidden)",
+    "number_of_battery_packs_per_vehicle": "*** (hidden)",
+    "number_of_seat_rows": "*** (hidden)",
+    "number_of_seats": "*** (hidden)",
+    "number_of_wheels": "*** (hidden)",
+    "other_battery_info": "*** (hidden)",
+    "other_bus_info": "*** (hidden)",
+    "other_engine_info": "*** (hidden)",
+    "other_motorcycle_info": "*** (hidden)",
+    "other_restraint_system_info": "*** (hidden)",
+    "other_trailer_info": "*** (hidden)",
+    "parking_assist": "*** (hidden)",
+    "pedestrian_automatic_emergency_braking_paeb": "*** (hidden)",
+    "plant_city": "*** (hidden)",
+    "plant_company_name": "*** (hidden)",
+    "plant_country": "*** (hidden)",
+    "plant_state": "*** (hidden)",
+    "possible_values": "*** (hidden)",
+    "pretensioner": "*** (hidden)",
+    "rear_automatic_emergency_braking": "*** (hidden)",
+    "rear_cross_traffic_alert": "*** (hidden)",
+    "sae_automation_level_from": "*** (hidden)",
+    "sae_automation_level_to": "*** (hidden)",
+    "seat_belt_type": "*** (hidden)",
+    "seat_cushion_air_bag_locations": "*** (hidden)",
+    "semiautomatic_headlamp_beam_switching": "*** (hidden)",
+    "series": "*** (hidden)",
+    "series2": "*** (hidden)",
+    "side_air_bag_locations": "*** (hidden)",
+    "steering_location": "*** (hidden)",
+    "suggested_vin": "*** (hidden)",
+    "tire_pressure_monitoring_system_tpms_type": "*** (hidden)",
+    "top_speed_mph": "*** (hidden)",
+    "track_width_inches": "*** (hidden)",
+    "traction_control": "*** (hidden)",
+    "trailer_body_type": "*** (hidden)",
+    "trailer_length_feet": "*** (hidden)",
+    "trailer_type_connection": "*** (hidden)",
+    "transmission_speeds": "*** (hidden)",
+    "transmission_style": "*** (hidden)",
+    "trim": "*** (hidden)",
+    "trim2": "*** (hidden)",
+    "turbo": "*** (hidden)",
+    "valve_train_design": "*** (hidden)",
+    "vehicle_descriptor": "*** (hidden)",
+    "vehicle_type": "*** (hidden)",
+    "wheel_base_inches_from": "*** (hidden)",
+    "wheel_base_inches_to": "*** (hidden)",
+    "wheel_base_type": "*** (hidden)",
+    "wheel_size_front_inches": "*** (hidden)",
+    "wheel_size_rear_inches": "*** (hidden)",
+    "wheelie_mitigation": "*** (hidden)",
+    "windows": "*** (hidden)"
+  },
+  "trims": [
+    {
+      "id": 49646,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "*************************** (subscription required)",
+      "msrp": 22500,
+      "invoice": 20249,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    },
+    {
+      "id": 49644,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "*************************** (subscription required)",
+      "msrp": 21700,
+      "invoice": 19530,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    },
+    {
+      "id": 49647,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "************************************* (subscription required)",
+      "msrp": 23800,
+      "invoice": 21417,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    },
+    {
+      "id": 49645,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "************************************* (subscription required)",
+      "msrp": 23000,
+      "invoice": 20699,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    },
+    {
+      "id": 49649,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "**************************************************** (subscription required)",
+      "msrp": 25800,
+      "invoice": 23215,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    },
+    {
+      "id": 49648,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "**************************************************** (subscription required)",
+      "msrp": 25000,
+      "invoice": 22496,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    },
+    {
+      "id": 49633,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "*************************** (subscription required)",
+      "msrp": 22400,
+      "invoice": 20159,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    },
+    {
+      "id": 49632,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "*************************** (subscription required)",
+      "msrp": 21600,
+      "invoice": 19441,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    },
+    {
+      "id": 49635,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "************************************* (subscription required)",
+      "msrp": 23700,
+      "invoice": 21328,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    },
+    {
+      "id": 49634,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "************************************* (subscription required)",
+      "msrp": 22900,
+      "invoice": 20609,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    },
+    {
+      "id": 49636,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "**************************************************** (subscription required)",
+      "msrp": 25700,
+      "invoice": 23125,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    },
+    {
+      "id": 49637,
+      "make_model_id": 214,
+      "year": 2003,
+      "name": "** (subscription required)",
+      "description": "**************************************************** (subscription required)",
+      "msrp": 24900,
+      "invoice": 22406,
+      "created": "2023-06-29T21:16:27-04:00",
+      "modified": "2023-06-29T21:16:27-04:00",
+      "make_model": {
+        "id": 214,
+        "make_id": 9,
+        "name": "****** (subscription required)",
+        "make": {
+          "id": 9,
+          "name": "Honda"
+        }
+      },
+      "__message": "NOTE: Data is limited to 2015-2020 for non-paying users. Search for 2015-2020 vehicles or subscribe to unlock this data. If you are still seeing this message after subscribing, be sure you have renewed your JWT and are including it in the HTTP authentication header. Read more here: https://carapi.app/docs/#authentication",
+      "make_model_submodel": {
+        "id": 49195,
+        "oem_make_model_id": 4346,
+        "year": 2003,
+        "make": "Honda",
+        "model": "Accord",
+        "submodel": "EX"
+      }
+    }
+  ]
+}
