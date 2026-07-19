@@ -1,0 +1,50 @@
+#!/bin/sh
+# Blocks commits that stage env files or credential-looking strings.
+# Bypass for a known false positive: SKIP_SECRET_CHECK=1 git commit ...
+
+if [ "$SKIP_SECRET_CHECK" = "1" ]; then
+    exit 0
+fi
+
+fail=0
+
+for f in $(git diff --cached --name-only --diff-filter=ACM); do
+    case "$f" in
+        .env.example) ;;
+        .env|*.env|*.pem|*.key|*_rsa|*.p12|*.pfx)
+            echo "BLOCKED: refusing to commit secret file '$f'"
+            fail=1
+            ;;
+    esac
+done
+
+patterns='-----BEGIN [A-Z ]*PRIVATE KEY-----
+(api_secret|api_token|api_key|password|client_secret)[[:space:]]*[=:][[:space:]]*["'"'"']?[A-Za-z0-9_\-]{16,}
+[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}
+gh[pousr]_[A-Za-z0-9]{20,}
+AKIA[0-9A-Z]{16}'
+
+added=$(git diff --cached -U0 --diff-filter=ACM | grep '^+' | grep -v '^+++')
+echo "$patterns" | while IFS= read -r pattern; do
+    [ -z "$pattern" ] && continue
+    match=$(printf '%s\n' "$added" | grep -iE -e "$pattern" | head -3)
+    if [ -n "$match" ]; then
+        echo "BLOCKED: staged change matches secret pattern: $pattern"
+        printf '%s\n' "$match" | cut -c1-120
+        touch .git/secret-check-failed
+    fi
+done
+
+if [ -f .git/secret-check-failed ]; then
+    rm -f .git/secret-check-failed
+    fail=1
+fi
+
+if [ "$fail" = "1" ]; then
+    echo ""
+    echo "Nothing was committed. Move secrets to .env (gitignored) and retry."
+    echo "False positive? Re-run with SKIP_SECRET_CHECK=1"
+    exit 1
+fi
+
+exit 0

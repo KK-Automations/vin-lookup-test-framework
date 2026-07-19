@@ -86,6 +86,7 @@ Invalid VINs return `422` with specific issues and correction suggestions.
 ## Development
 
 ```bash
+git config core.hooksPath .githooks   # once per clone: secret guard on commit
 pytest              # unit, contract, and web tests (live API tests excluded)
 pytest -m live      # optional: hit the real NHTSA vPIC API
 ruff check app tests config
