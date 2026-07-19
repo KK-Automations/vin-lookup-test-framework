@@ -55,6 +55,19 @@ No configuration is required: NHTSA vPIC and the local structural decoder
 work without keys. To enable the optional providers, copy `.env.example` to
 `.env` and fill in CarAPI or Auto.dev credentials.
 
+## Deploy
+
+`render.yaml` is a Render blueprint for the same Dockerfile used locally.
+On [render.com](https://render.com), New > Blueprint, point it at this repo,
+and it builds and deploys the free web service tier automatically. CarAPI
+and Auto.dev keys are optional and prompted for during setup; leaving them
+blank just runs with NHTSA vPIC and the local decoder.
+
+The free plan has no persistent disk, so the SQLite cache resets on every
+deploy and restart. That only affects cache warmth, not correctness: every
+provider is re-queried fresh, and NHTSA vPIC and the local decoder need no
+cache to work.
+
 ## API example
 
 ```bash
@@ -100,7 +113,7 @@ network access.
 
 See [docs/architecture.md](docs/architecture.md) for the system diagrams and
 [docs/adr/](docs/adr/) for the architecture decision records, one per
-decision, from security remediation through testing strategy.
+decision, from security remediation through hosting.
 
 Layers in short: pure domain logic (`app/domain/`), pluggable providers
 behind a registry (`app/providers/`), a consensus engine

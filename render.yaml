@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: vin-lookup
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /healthz
+    envVars:
+      - key: VIN_DB_PATH
+        value: /data/vin_cache.sqlite3
+      - key: CARAPI_API_TOKEN
+        sync: false
+      - key: CARAPI_API_SECRET
+        sync: false
+      - key: AUTODEV_API_KEY
+        sync: false
