@@ -7,10 +7,10 @@ Most free VIN decoders read the same federal database and silently show
 blank or wrong values. VIN Lookup cross-checks every decoded field across
 multiple sources and labels it honestly:
 
-- **✓ Confirmed** — two or more sources agree
-- **⚠ Single source** — only one source reported it, and the badge names it
-- **✗ Sources disagree** — every value is shown with its source
-- **not available** — no source reported it; we never fill gaps with guesses
+- **✓ Confirmed**: two or more sources agree
+- **⚠ Single source**: only one source reported it, and the badge names it
+- **✗ Sources disagree**: every value is shown with its source
+- **not available**: no source reported it; we never fill gaps with guesses
 
 An overall confidence score rolls the field badges up with make, model, and
 year weighted highest, and the formula is explained right in the UI.

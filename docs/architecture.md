@@ -66,7 +66,8 @@ sequenceDiagram
 - **Graceful degradation**: providers without keys are skipped at startup;
   provider failures at lookup time only remove their vote. The local
   structural decoder guarantees a result fully offline.
-- **Cache as leverage**: raw payloads are cached, so mapper and consensus
-  improvements apply to previously fetched VINs without refetching.
+- **Cached payloads are reused**: raw provider responses are stored, so
+  mapper and consensus improvements apply to previously fetched VINs
+  without refetching.
 - **Zero budget**: NHTSA vPIC needs no key; CarAPI and Auto.dev free tiers
   are optional enrichment. SQLite is the only store.
