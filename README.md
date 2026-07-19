@@ -1,40 +1,40 @@
 # VIN Lookup
 
-A VIN search, decoder, and make/model/year explorer for North America that
-tells you exactly how much to trust every field.
+A VIN decoder, search tool, and make/model/year explorer for North America.
 
-Most free VIN decoders read the same federal database and silently show
-blank or wrong values. VIN Lookup cross-checks every decoded field across
-multiple sources and labels it honestly:
+Most free VIN decoders pull from the same federal database and still show
+blank or wrong fields with no way to tell which is which. This one checks
+each decoded field against multiple independent sources and reports the
+actual agreement level instead of guessing:
 
-- **✓ Confirmed**: two or more sources agree
-- **⚠ Single source**: only one source reported it, and the badge names it
-- **✗ Sources disagree**: every value is shown with its source
-- **not available**: no source reported it; we never fill gaps with guesses
+- Confirmed: two or more sources agree
+- Single source: only one source reported it, and the badge names which one
+- Conflict: sources disagree, both values are shown
+- Not available: nobody reported it, nothing is filled in to guess
 
-An overall confidence score rolls the field badges up with make, model, and
-year weighted highest, and the formula is explained right in the UI.
+Confidence is a weighted average across fields (make, model, and year weigh
+most), shown with the formula in the UI rather than as an opaque score.
 
 ## Features
 
-- **ISO 3779 validation**: full check digit verification, not just a length
-  check. Failures warn instead of block, since imported vehicles can
-  legitimately fail the North American check.
-- **Typo rescue**: illegal letters (I, O, Q) and visually confusable pairs
-  (S/5, B/8, Z/2, G/6, D/0, T/7, A/4) produce up to three one-click
-  "Did you mean" corrections, ranked by check digit validity.
-- **Multi-provider decoding**: NHTSA vPIC (free, no key), CarAPI and
-  Auto.dev free tiers (optional keys), plus a local structural decoder that
-  works fully offline. Missing keys skip the provider; nothing crashes.
-- **Explorer**: browse every model registered with vPIC for any make and
-  model year back to 1981.
-- **SQLite cache**: repeat lookups are instant and cost zero provider quota;
-  raw payloads are cached so decoding logic improvements apply retroactively.
-- **JSON API**: `/api/v1/vin/<vin>` returns the full consensus with
-  per-field provenance; `/api/v1/makes` and `/api/v1/models` back the
-  explorer.
-- Accessible, mobile-first purple UI: server-rendered Jinja with HTMX and
-  Alpine.js, no build step.
+- ISO 3779 check digit validation, not just a length check. Failures warn
+  instead of block, since imported vehicles can legitimately fail the North
+  American check.
+- Typo rescue for illegal letters (I, O, Q) and visually confusable pairs
+  (S/5, B/8, Z/2, G/6, D/0, T/7, A/4), producing up to three one-click "Did
+  you mean" corrections ranked by check digit validity.
+- Decodes against NHTSA vPIC (free, no key), CarAPI and Auto.dev (optional
+  free-tier keys), and a local structural decoder that works fully offline.
+  A missing key just skips that provider; nothing crashes.
+- An explorer for browsing every model vPIC has registered for a given
+  make and model year, back to 1981.
+- SQLite-backed caching: repeat lookups are instant and cost no provider
+  quota, and cached payloads get re-mapped automatically as the decoding
+  logic improves.
+- A JSON API at `/api/v1/vin/<vin>`, `/api/v1/makes`, and `/api/v1/models`,
+  with full per-field provenance.
+- Mobile-first, accessible UI built with server-rendered Jinja, HTMX, and
+  Alpine.js. No build step.
 
 ## Quick start
 

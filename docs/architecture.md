@@ -1,8 +1,8 @@
 # Architecture
 
 VIN Lookup is a Flask application that decodes Vehicle Identification
-Numbers by cross-checking multiple free data sources and presenting
-per-field agreement honestly. Architectural decisions are recorded in
+Numbers by cross-checking multiple free data sources and showing the
+agreement level for each field. Architectural decisions are recorded in
 [docs/adr](adr/), one file per decision.
 
 ## System context
@@ -61,13 +61,12 @@ sequenceDiagram
 
 ## Key properties
 
-- **Honesty first**: fields no source reports render as "not available";
-  conflicting sources are shown side by side, never silently resolved.
-- **Graceful degradation**: providers without keys are skipped at startup;
-  provider failures at lookup time only remove their vote. The local
-  structural decoder guarantees a result fully offline.
-- **Cached payloads are reused**: raw provider responses are stored, so
-  mapper and consensus improvements apply to previously fetched VINs
-  without refetching.
-- **Zero budget**: NHTSA vPIC needs no key; CarAPI and Auto.dev free tiers
-  are optional enrichment. SQLite is the only store.
+- Fields no source reports render as "not available"; conflicting sources
+  are shown side by side rather than resolved silently.
+- Providers without keys are skipped at startup, and a provider failing
+  mid-lookup only removes its vote. The local structural decoder
+  guarantees a result even fully offline.
+- Raw provider responses are cached, so mapper and consensus improvements
+  apply to previously fetched VINs without refetching.
+- NHTSA vPIC needs no key. CarAPI and Auto.dev are optional enrichment on
+  their free tiers, and SQLite is the only datastore.
