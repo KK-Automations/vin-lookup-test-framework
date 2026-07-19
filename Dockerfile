@@ -20,4 +20,6 @@ ENV VIN_DB_PATH=/data/vin_cache.sqlite3
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:8000", "app:create_app()"]
+# PORT is injected by most container hosting platforms (Render, Fly, etc.);
+# it falls back to 8000 for local docker compose runs where PORT is unset.
+CMD gunicorn --workers 2 --bind 0.0.0.0:${PORT:-8000} "app:create_app()"
