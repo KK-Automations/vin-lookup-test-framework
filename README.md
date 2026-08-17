@@ -1,40 +1,30 @@
 # VIN Lookup
 
-A VIN decoder, search tool, and make/model/year explorer for North America.
+**Live: https://vin-lookup-test-framework.onrender.com**
 
-Most free VIN decoders pull from the same federal database and still show
-blank or wrong fields with no way to tell which is which. This one checks
-each decoded field against multiple independent sources and reports the
-actual agreement level instead of guessing:
+A VIN decoder, search tool, and make/model/year explorer for North America.
+Checks each field against multiple independent sources instead of trusting
+one, and shows the actual agreement level:
 
 - Confirmed: two or more sources agree
-- Single source: only one source reported it, and the badge names which one
+- Single source: only one source reported it
 - Conflict: sources disagree, both values are shown
-- Not available: nobody reported it, nothing is filled in to guess
+- Not available: nobody reported it, nothing is guessed
 
-Confidence is a weighted average across fields (make, model, and year weigh
-most), shown with the formula in the UI rather than as an opaque score.
+Confidence is a weighted average across fields (make/model/year weigh
+most), shown with the formula in the UI.
 
 ## Features
 
-- ISO 3779 check digit validation, not just a length check. Failures warn
-  instead of block, since imported vehicles can legitimately fail the North
-  American check.
-- Typo rescue for illegal letters (I, O, Q) and visually confusable pairs
-  (S/5, B/8, Z/2, G/6, D/0, T/7, A/4), producing up to three one-click "Did
-  you mean" corrections ranked by check digit validity.
-- Decodes against NHTSA vPIC (free, no key), CarAPI and Auto.dev (optional
-  free-tier keys), and a local structural decoder that works fully offline.
-  A missing key just skips that provider; nothing crashes.
-- An explorer for browsing every model vPIC has registered for a given
-  make and model year, back to 1981.
-- SQLite-backed caching: repeat lookups are instant and cost no provider
-  quota, and cached payloads get re-mapped automatically as the decoding
-  logic improves.
-- A JSON API at `/api/v1/vin/<vin>`, `/api/v1/makes`, and `/api/v1/models`,
-  with full per-field provenance.
-- Mobile-first, accessible UI built with server-rendered Jinja, HTMX, and
-  Alpine.js. No build step.
+- ISO 3779 check digit validation. Failures warn, not block, since
+  imported vehicles can legitimately fail the North American check.
+- Typo correction for illegal letters (I/O/Q) and confusable pairs
+  (S/5, B/8, Z/2, G/6, D/0, T/7, A/4), ranked "Did you mean" suggestions.
+- NHTSA vPIC (free, no key), CarAPI and Auto.dev (optional keys), plus an
+  offline local decoder as fallback. Missing keys just skip that provider.
+- Make/model/year explorer back to 1981.
+- SQLite caching, no build step frontend (Jinja + HTMX + Alpine.js).
+- JSON API with full per-field provenance.
 
 ## Quick start
 
@@ -51,85 +41,37 @@ flask --app app run
 # open http://localhost:5000
 ```
 
-No configuration is required: NHTSA vPIC and the local structural decoder
-work without keys. To enable the optional providers, copy `.env.example` to
-`.env` and fill in CarAPI or Auto.dev credentials.
+No keys required for NHTSA vPIC and the local decoder. Copy `.env.example`
+to `.env` to add CarAPI or Auto.dev.
 
 ## Deploy
 
-`render.yaml` is a Render blueprint for the same Dockerfile used locally.
-On [render.com](https://render.com), New > Blueprint, point it at this repo,
-and it builds and deploys the free web service tier automatically. CarAPI
-and Auto.dev keys are optional and prompted for during setup; leaving them
-blank just runs with NHTSA vPIC and the local decoder.
+Live on Render's free tier via `render.yaml` (Docker blueprint). To deploy
+your own: render.com, New > Blueprint, point it at this repo. Free plan has
+no persistent disk, so the cache resets on restart; correctness isn't
+affected, providers are just re-queried.
 
-The free plan has no persistent disk, so the SQLite cache resets on every
-deploy and restart. That only affects cache warmth, not correctness: every
-provider is re-queried fresh, and NHTSA vPIC and the local decoder need no
-cache to work.
-
-## API example
+## API
 
 ```bash
-curl http://localhost:8000/api/v1/vin/1HGCM82633A004352
+curl https://vin-lookup-test-framework.onrender.com/api/v1/vin/1HGCM82633A004352
 ```
 
-```json
-{
-  "vin": "1HGCM82633A004352",
-  "valid": true,
-  "check_digit_ok": true,
-  "confidence": {"score": 0.643, "bucket": "Medium", "providers_ok": 3, "providers_total": 3},
-  "fields": {
-    "make": {
-      "status": "confirmed",
-      "value": "Honda",
-      "independent_sources": 1,
-      "votes": [
-        {"provider": "nhtsa_vpic", "value": "Honda"},
-        {"provider": "carapi", "value": "HONDA"}
-      ]
-    }
-  }
-}
-```
-
-Invalid VINs return `422` with specific issues and correction suggestions.
+Returns consensus JSON: per-field status, value, and provenance. Invalid
+VINs return `422` with issues and correction suggestions.
 
 ## Development
 
 ```bash
 git config core.hooksPath .githooks   # once per clone: secret guard on commit
-pytest              # unit, contract, and web tests (live API tests excluded)
-pytest -m live      # optional: hit the real NHTSA vPIC API
+pytest
 ruff check app tests config
 ```
 
-Contract tests run against recorded real provider payloads in
-`tests/fixtures/`, so mappers are verified against actual API shapes without
-network access.
+## More
 
-## Architecture
-
-See [docs/architecture.md](docs/architecture.md) for the system diagrams and
-[docs/adr/](docs/adr/) for the architecture decision records, one per
-decision, from security remediation through hosting.
-
-Layers in short: pure domain logic (`app/domain/`), pluggable providers
-behind a registry (`app/providers/`), a consensus engine
-(`app/consensus/`), orchestration services (`app/services/`), SQLite
-repositories (`app/cache/`), and Flask blueprints (`app/routes/`).
-
-## Security
-
-Credentials live only in `.env` (gitignored) or deployment environment
-variables; `.env.example` documents the contract. CI runs a TruffleHog
-secret scan on every push. See [SECURITY.md](SECURITY.md) for the
-vulnerability reporting policy.
-
-## License
-
-MIT, see [LICENSE](LICENSE). Vendored libraries and data source terms are
-listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Vehicle data
-decoded from NHTSA vPIC is public domain; CarAPI and Auto.dev responses
-are subject to their respective terms of service.
+- Architecture and diagrams: [docs/architecture.md](docs/architecture.md),
+  decision log in [docs/adr/](docs/adr/)
+- Security policy: [SECURITY.md](SECURITY.md)
+- License: MIT ([LICENSE](LICENSE)); third-party notices in
+  [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
