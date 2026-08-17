@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: vin-lookup
+    name: vin-truth
     runtime: docker
     dockerfilePath: ./Dockerfile
     dockerContext: .

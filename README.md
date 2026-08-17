@@ -1,6 +1,6 @@
-# VIN Lookup
+# Honest VIN
 
-**Live: https://vin-lookup-test-framework.onrender.com**
+**Live: https://vin-truth.onrender.com**
 
 A VIN decoder, search tool, and make/model/year explorer for North America.
 Checks each field against multiple independent sources instead of trusting
@@ -54,7 +54,7 @@ affected, providers are just re-queried.
 ## API
 
 ```bash
-curl https://vin-lookup-test-framework.onrender.com/api/v1/vin/1HGCM82633A004352
+curl https://vin-truth.onrender.com/api/v1/vin/1HGCM82633A004352
 ```
 
 Returns consensus JSON: per-field status, value, and provenance. Invalid

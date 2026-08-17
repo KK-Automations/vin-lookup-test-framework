@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}VIN Lookup{% endblock %}</title>
+    <title>{% block title %}Honest VIN{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <script src="{{ url_for('static', filename='js/htmx.min.js') }}" defer></script>
@@ -14,7 +14,7 @@
         <div class="container header-row">
             <a class="brand" href="{{ url_for('pages.index') }}">
                 <span class="brand-mark" aria-hidden="true">V</span>
-                <span class="brand-name">VIN Lookup</span>
+                <span class="brand-name">Honest VIN</span>
             </a>
             <nav class="site-nav" aria-label="Main">
                 <a href="{{ url_for('pages.index') }}">Decode</a>
@@ -28,8 +28,10 @@
     </main>
     <footer class="site-footer">
         <div class="container">
-            <p>Data cross-checked across independent sources. Fields no source
-            reports are shown honestly as not available.</p>
+            <p>Vehicle history reports cost a subscription and still can't tell
+            you if a spec is right. Free decoders skip the cost but trust a
+            single source blindly. Honest VIN checks multiple sources for
+            every field so you always know what's actually confirmed.</p>
         </div>
     </footer>
 </body>
