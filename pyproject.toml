@@ -1,5 +1,5 @@
 [project]
-name = "vin-lookup"
+name = "honest-vin"
 version = "1.0.0"
 description = "VIN search and decoder with cross-checked accuracy for North America"
 requires-python = ">=3.10"
