@@ -31,10 +31,14 @@ confidence, and the old name and the footer disclaimer didn't say so.
    and deployment config (`render.yaml`, `pyproject.toml`, Dockerfile,
    CI) all updated together rather than leaving the product half-renamed.
 
-`render.yaml`'s `name:` field only sets the slug at initial Render
-blueprint creation; it does not rename an already-provisioned service.
-The live rename happens in the Render dashboard (Settings > Name), with
-`render.yaml` updated so any future fresh blueprint deploy matches.
+Render's free `onrender.com` subdomain is fixed at service creation and
+cannot be renamed afterward. The dashboard's Settings > Name field is
+only a display label; changing it does not touch the actual URL slug,
+confirmed by editing it directly and finding the live URL unchanged
+(also documented on Render's own community forum). The only way to get
+`vin-truth.onrender.com` is to delete the existing service and create a
+fresh one from this repo's `render.yaml`, which now has `name: vin-truth`
+so the new service provisions with the right slug from the start.
 
 Not touched: the GitHub repository name (`vin-lookup-test-framework`), a
 much larger and URL-breaking change nobody asked for; the `vin_lookups`
@@ -46,7 +50,10 @@ would be revisionist; the favicon binary, no new logo was requested.
 
 - The name and URL now describe the actual differentiator (honest,
   multi-source, free) instead of a generic label.
-- The old `vin-lookup-test-framework.onrender.com` slug is freed up once
-  the dashboard rename happens; Render does not guarantee a redirect from
-  an old slug to a new one, so any existing links to the old URL will
-  break rather than forward.
+- Recreating the service means a few minutes of downtime, losing the old
+  service's deploy history and logs, and re-adding the CarAPI and Auto.dev
+  environment variables from scratch. The old
+  `vin-lookup-test-framework.onrender.com` slug becomes unreachable once
+  the old service is deleted; Render does not redirect an old slug to a
+  new one, so any existing links to the old URL will break rather than
+  forward.
